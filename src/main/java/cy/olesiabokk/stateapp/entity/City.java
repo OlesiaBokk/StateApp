@@ -19,4 +19,8 @@ public class City implements General {
     public String getName() {
         return name;
     }
+
+    public String getCapitalName() {
+        return capital;
+    }
 }
