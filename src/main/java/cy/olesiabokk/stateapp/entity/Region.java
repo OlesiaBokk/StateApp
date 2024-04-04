@@ -1,15 +1,20 @@
 package cy.olesiabokk.stateapp.entity;
 
-public class Region {
-    private static Region instance;
+import cy.olesiabokk.stateapp.entity.interfaces.General;
+import cy.olesiabokk.stateapp.util.Generator;
 
-    private Region() {
+public class Region implements General {
+    private String name;
+
+    private District district;
+    private Generator generator = new Generator();
+
+    public Region() {
+        this.name = generator.generateName();
     }
 
-    public static Region getInstance() {
-        if (instance == null) {
-            instance = new Region();
-        }
-        return instance;
+    @Override
+    public String getName() {
+        return name;
     }
 }
