@@ -1,15 +1,22 @@
 package cy.olesiabokk.stateapp.entity;
 
-public class City {
+import cy.olesiabokk.stateapp.entity.interfaces.General;
+import cy.olesiabokk.stateapp.util.Generator;
 
-    private static City instance;
+public class City implements General {
+    private String name;
+    private static String capital;
+    private Generator generator = new Generator();
 
-    private City(){}
-
-    public static City getInstance(){
-        if(instance == null){
-            instance = new City();
+    public City() {
+        this.name = generator.generateName();
+        if(capital == null){
+            this.capital = generator.generateName();
         }
-        return instance;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
