@@ -9,14 +9,20 @@ public class Generator {
         return (char) (random.nextInt(26) + 'a');
     }
 
-    private int getRandomNumber() {
+    public int getRandomNumber() {
         return random.nextInt();
     }
-    public String generateName() {
+
+    public int getRandomNumber(int from, int to) {
         int randomNum = getRandomNumber();
-        if (randomNum < 5 || randomNum > 10) {
-            randomNum = (4 + random.nextInt(11 - 4));
+        if (randomNum < from || randomNum > to) {
+            randomNum = (from + random.nextInt(to - from));
         }
+        return randomNum;
+    }
+
+    public String generateName() {
+        int randomNum = getRandomNumber(5, 10);
         char[] strName = new char[randomNum];
         for (int i = 0; i < strName.length; i++) {
             strName[i] = getRandomChar();
@@ -24,11 +30,8 @@ public class Generator {
         return String.valueOf(strName);
     }
 
-    public int generateCitizenAge(){
-        int randomAge = getRandomNumber();
-        if(randomAge > 100 || randomAge == 0){
-            randomAge = (1 + random.nextInt(100 - 1));
-        }
+    public int generateCitizenAge() {
+        int randomAge = getRandomNumber(0, 100);
         return randomAge;
     }
 }
