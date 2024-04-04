@@ -1,20 +1,22 @@
 package cy.olesiabokk.stateapp.entity;
 
+import cy.olesiabokk.stateapp.entity.interfaces.General;
 import cy.olesiabokk.stateapp.util.Generator;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Citizen {
+public class Citizen implements General {
     private static AtomicLong counter = new AtomicLong(0);
     private final long id;
     private String name;
     private String surname;
     private int age;
+
     private City city;
     private State state;
+    private Generator generator = new Generator();
 
     public Citizen() {
-        Generator generator = new Generator();
         this.id = createID();
         this.name = generator.generateName();
         this.surname = generator.generateName();
@@ -30,6 +32,7 @@ public class Citizen {
         return id;
     }
 
+    @Override
     public String getName() {
         return name;
     }
