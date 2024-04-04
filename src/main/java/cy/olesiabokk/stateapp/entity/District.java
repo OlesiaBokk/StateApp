@@ -1,14 +1,20 @@
 package cy.olesiabokk.stateapp.entity;
 
-public class District {
-    private static District instance;
+import cy.olesiabokk.stateapp.entity.interfaces.General;
+import cy.olesiabokk.stateapp.util.Generator;
 
-    private District(){}
+public class District implements General {
+    private String name;
 
-    public static District getInstance(){
-        if(instance == null){
-            instance = new District();
-        }
-        return instance;
+    private City city = new City();
+    private Generator generator = new Generator();
+
+    public District() {
+        this.name = generator.generateName();
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
