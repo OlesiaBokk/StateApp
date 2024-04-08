@@ -39,7 +39,7 @@ public class EntityGenerator {
 
     public ArrayList<Citizen> createCitizenCollection() {
         ArrayList<Citizen> citizens = new ArrayList<>();
-        int quantity = generator.getRandomNumber(7000, 10000);
+        int quantity = generator.getRandomNumber(1000, 5000);
         for (int i = 0; i < quantity; i++) {
             citizens.add(new Citizen());
         }
