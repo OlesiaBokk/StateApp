@@ -8,53 +8,41 @@ import cy.olesiabokk.stateapp.entity.Region;
 import java.util.ArrayList;
 
 public class EntityGenerator {
-    private Generator generator = new Generator();
-    private Region region = new Region();
-    private District district = new District();
-    private City city = new City();
-    private Citizen citizen = new Citizen();
-
-    final ArrayList<Region> regionList = new ArrayList<>();
-    final ArrayList<District> districtList = new ArrayList<>();
-    final ArrayList<City> cityList = new ArrayList<>();
-    final ArrayList<Citizen> citizenList = new ArrayList<>();
-
+    private final Generator generator = new Generator();
 
     public ArrayList<Region> createRegionCollection() {
-        for (int i = 0; i < 3; i++) {
-            regionList.add(region);
+        ArrayList<Region> regions = new ArrayList<>();
+        int listSize = generator.getRandomNumber(1, 6);
+        for (int i = 0; i < listSize; i++) {
+            regions.add(new Region(createDistrictCollection()));
         }
-        return regionList;
+        return regions;
     }
 
-    public ArrayList<District> createDistrictCollection() { //key District, value Region
-        int random = generator.getRandomNumber(1, 10);
-        for (int i = 0; i < regionList.size(); i++) {
-            for (int j = 0; j < random; j++) {
-                districtList.add(district);
-
-            }
+    public ArrayList<District> createDistrictCollection() {
+        ArrayList<District> districts = new ArrayList<>();
+        int listSize = generator.getRandomNumber(1, 10);
+        for (int i = 0; i < listSize; i++) {
+            districts.add(new District(createCityCollection()));
         }
-        return districtList;
+        return districts;
     }
 
-    public ArrayList<City> createCityCollection() { //key City, value District
-        int random = generator.getRandomNumber(1, 15);
-        for (int i = 0; i < districtList.size(); i++) {
-            for (int j = 0; j < random; j++) {
-                cityList.add(city);
-            }
+    public ArrayList<City> createCityCollection() {
+        ArrayList<City> cities = new ArrayList<>();
+        int listSize = generator.getRandomNumber(1, 15);
+        for (int i = 0; i < listSize; i++) {
+            cities.add(new City());
         }
-        return cityList;
+        return cities;
     }
 
-    public ArrayList<Citizen> createCitizenCollection() { //key CitizenId, value City
-        int random = generator.getRandomNumber(1, 10000);
-        for (int i = 0; i < cityList.size(); i++) {
-            for (int j = 0; j < random; j++) {
-                citizenList.add(citizen);
-            }
+    public ArrayList<Citizen> createCitizenCollection() {
+        ArrayList<Citizen> citizens = new ArrayList<>();
+        int quantity = generator.getRandomNumber(7000, 10000);
+        for (int i = 0; i < quantity; i++) {
+            citizens.add(new Citizen());
         }
-        return citizenList;
+        return citizens;
     }
 }

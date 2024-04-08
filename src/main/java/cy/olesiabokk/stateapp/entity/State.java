@@ -1,31 +1,39 @@
 package cy.olesiabokk.stateapp.entity;
 
 import cy.olesiabokk.stateapp.entity.interfaces.General;
+import cy.olesiabokk.stateapp.util.EntityGenerator;
 import cy.olesiabokk.stateapp.util.Generator;
 
-public class State implements General {
-    private static State instance;
-    private String name;
-    private final String capital;
-    private District district;
-    private Region region;
-    private City city;
-    private Generator generator = new Generator();
+import java.util.ArrayList;
 
-    private State() {
+public class State implements General {
+    private static final State instance = new State(new EntityGenerator().createRegionCollection());
+    private final String name;
+    private final String capitalName;
+    private Capital capital;
+    private final Generator generator = new Generator();
+    private final ArrayList<Region> regions;
+
+    private State(ArrayList<Region> regions) {
         this.name = generator.generateName();
-        this.capital = city.getCapitalName();
+        this.regions = new ArrayList<>(regions);
+        this.capitalName = getCapital();
     }
 
     public static State getInstance() {
-        if (instance == null) {
-            instance = new State();
-        }
         return instance;
+    }
+
+    public ArrayList<Region> getRegions() {
+        return new ArrayList<>(regions);
     }
 
     @Override
     public String getName() {
         return name;
+    }
+
+    public String getCapital() {
+        return capital.getName();
     }
 }

@@ -3,7 +3,7 @@ package cy.olesiabokk.stateapp.util;
 import java.util.Random;
 
 public class Generator {
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private char getRandomChar() {
         return (char) (random.nextInt(26) + 'a');
@@ -31,7 +31,6 @@ public class Generator {
     }
 
     public int generateCitizenAge() {
-        int randomAge = getRandomNumber(0, 100);
-        return randomAge;
+        return getRandomNumber(0, 100);
     }
 }
