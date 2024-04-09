@@ -1,7 +1,7 @@
-package cy.olesiabokk.stateapp.entity;
+package cy.olesiabokk.stateapp.model.entity;
 
-import cy.olesiabokk.stateapp.entity.interfaces.General;
-import cy.olesiabokk.stateapp.util.Generator;
+import cy.olesiabokk.stateapp.model.entity.interfaces.General;
+import cy.olesiabokk.stateapp.model.util.Generator;
 
 import java.util.concurrent.atomic.AtomicLong;
 

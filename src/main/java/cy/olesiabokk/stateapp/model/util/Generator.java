@@ -1,4 +1,4 @@
-package cy.olesiabokk.stateapp.util;
+package cy.olesiabokk.stateapp.model.util;
 
 import java.util.Random;
 

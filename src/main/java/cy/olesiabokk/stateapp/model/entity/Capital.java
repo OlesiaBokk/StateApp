@@ -1,4 +1,4 @@
-package cy.olesiabokk.stateapp.entity;
+package cy.olesiabokk.stateapp.model.entity;
 
 public class Capital extends City {
     private static Capital instance;

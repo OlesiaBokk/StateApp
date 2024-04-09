@@ -1,9 +1,9 @@
-package cy.olesiabokk.stateapp.util;
+package cy.olesiabokk.stateapp.model.util;
 
-import cy.olesiabokk.stateapp.entity.Citizen;
-import cy.olesiabokk.stateapp.entity.City;
-import cy.olesiabokk.stateapp.entity.District;
-import cy.olesiabokk.stateapp.entity.Region;
+import cy.olesiabokk.stateapp.model.entity.Citizen;
+import cy.olesiabokk.stateapp.model.entity.City;
+import cy.olesiabokk.stateapp.model.entity.District;
+import cy.olesiabokk.stateapp.model.entity.Region;
 
 import java.util.ArrayList;
 
