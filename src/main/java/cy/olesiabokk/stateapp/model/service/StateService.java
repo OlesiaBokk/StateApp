@@ -5,8 +5,8 @@ import cy.olesiabokk.stateapp.model.entity.State;
 
 import java.util.List;
 
-public class StateService implements StateServiceInterface{
-    private State state;
+public class StateService implements StateServiceInterface {
+    private final State state;
 
     public StateService() {
         state = State.getInstance();
@@ -34,7 +34,6 @@ public class StateService implements StateServiceInterface{
 
     @Override
     public int getResidentAverageAge() {
-        //sum all ages / all citizen
         List<Integer> allCitizenAge = state.getRegions().stream()
                 .flatMap(region -> region.getDistricts().stream())
                 .flatMap(district -> district.getCities().stream())
@@ -47,26 +46,25 @@ public class StateService implements StateServiceInterface{
     }
 
     @Override
-    public void getResByLettersNumber(int number) {
-        state.getRegions().stream()
+    public List<String> getResByLettersNumber(int number) {
+        return state.getRegions().stream()
                 .flatMap(region -> region.getDistricts().stream())
                 .flatMap(district -> district.getCities().stream())
                 .flatMap(city -> city.getCitizens().stream())
                 .map(Citizen::getName)
                 .filter(name -> name.toCharArray().length == number)
-                .forEach(System.out::println);
+                .toList();
 
     }
 
     @Override
-    public void getResNamesByFirstChar(char character) {
-        state.getRegions().stream()
+    public List<String> getResNamesByFirstChar(char character) {
+        return state.getRegions().stream()
                 .flatMap(region -> region.getDistricts().stream())
                 .flatMap(district -> district.getCities().stream())
                 .flatMap(city -> city.getCitizens().stream())
                 .map(Citizen::getName)
                 .filter(name -> name.charAt(0) == character)
-                .forEach(System.out::println);
+                .toList();
     }
-
 }
