@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class State implements General {
     private static final State instance = new State();
+    private static int area;
     private final String name;
-    private final String capitalName;
     private Capital capital;
     private final Generator generator = new Generator();
     private final ArrayList<Region> regions;
@@ -17,7 +17,7 @@ public class State implements General {
     private State() {
         this.name = generator.generateName();
         this.regions = new EntityGenerator().createRegionCollection();
-        this.capitalName = getCapital();
+        this.area = generator.getRandomNumber(1000, 10000000);
         regions.stream()
                 .flatMap(region -> region.getDistricts().stream())
                 .flatMap(district -> district.getCities().stream())
@@ -39,5 +39,9 @@ public class State implements General {
 
     public String getCapital() {
         return capital.getName();
+    }
+
+    public int getArea(){
+        return area;
     }
 }
