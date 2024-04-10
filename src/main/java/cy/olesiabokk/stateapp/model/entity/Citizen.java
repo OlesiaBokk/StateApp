@@ -48,4 +48,11 @@ public class Citizen implements General {
     public State getState() {
         return state;
     }
+
+    @Override
+    public String toString() {
+        return "Citizen{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
