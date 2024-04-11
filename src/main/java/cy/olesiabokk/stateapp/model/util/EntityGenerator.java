@@ -1,9 +1,6 @@
 package cy.olesiabokk.stateapp.model.util;
 
-import cy.olesiabokk.stateapp.model.entity.Citizen;
-import cy.olesiabokk.stateapp.model.entity.City;
-import cy.olesiabokk.stateapp.model.entity.District;
-import cy.olesiabokk.stateapp.model.entity.Region;
+import cy.olesiabokk.stateapp.model.entity.*;
 
 import java.util.ArrayList;
 
@@ -37,11 +34,11 @@ public class EntityGenerator {
         return cities;
     }
 
-    public ArrayList<Citizen> createCitizenCollection() {
+    public ArrayList<Citizen> createCitizenCollection(State state, String cityName, String districtName, String regionName) {
         ArrayList<Citizen> citizens = new ArrayList<>();
         int quantity = generator.getRandomNumber(1000, 5000);
         for (int i = 0; i < quantity; i++) {
-            citizens.add(new Citizen());
+            citizens.add(new Citizen(state, cityName, districtName, regionName));
         }
         return citizens;
     }
