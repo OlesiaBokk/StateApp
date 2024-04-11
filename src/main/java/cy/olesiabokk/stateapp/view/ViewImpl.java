@@ -1,10 +1,14 @@
 package cy.olesiabokk.stateapp.view;
 
 import cy.olesiabokk.stateapp.controller.Controller;
+import cy.olesiabokk.stateapp.model.entity.Citizen;
+
+import java.util.ArrayList;
 
 public class ViewImpl implements View {
     public Controller controller;
-    public ViewImpl(Controller controller){
+
+    public ViewImpl(Controller controller) {
         this.controller = controller;
     }
 
@@ -35,16 +39,17 @@ public class ViewImpl implements View {
 
     @Override
     public void printResByLettersNumber() {
-        System.out.println("Resident list by letters number: " + controller.requestResByLettersNumber().toString());
+        ArrayList<Citizen> citizens = controller.requestResByLettersNumber();
+        for (Citizen citizen : citizens) {
+            System.out.println(citizen.toString());
+        }
     }
 
     @Override
     public void printResNamesByFirstChar() {
-        System.out.println("Resident list by first letter: " + controller.requestResNamesByFirstChar().toString());
-    }
-
-    @Override
-    public String toString() {
-        return "Resident name = ";
+        ArrayList<Citizen> citizens = controller.requestResNamesByFirstChar();
+        for (Citizen citizen: citizens) {
+            System.out.println(citizen.toString());
+        }
     }
 }
