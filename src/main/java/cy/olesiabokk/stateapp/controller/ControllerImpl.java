@@ -1,9 +1,10 @@
 package cy.olesiabokk.stateapp.controller;
 
+import cy.olesiabokk.stateapp.model.entity.Citizen;
 import cy.olesiabokk.stateapp.model.service.StateService;
 import cy.olesiabokk.stateapp.view.View;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ControllerImpl implements Controller {
     public StateService stateService;
@@ -23,37 +24,17 @@ public class ControllerImpl implements Controller {
         while (flag) {
             int number = menu.getUserNumber();
             switch (number) {
-                case 1:
-                    view.printStateName();
-                    break;
-                case 2:
-                    view.printCapitalName();
-                    break;
-
-                case 3:
-                    view.printStateArea();
-                    break;
-
-                case 4:
-                    view.printRegionCount();
-                    break;
-
-                case 5:
-                    view.printResidentsAverageAge();
-                    break;
-
-                case 6:
-                    view.printResByLettersNumber();
-                    break;
-
-                case 7:
-                    view.printResNamesByFirstChar();
-                    break;
-
-                case 0:
+                case 1 -> view.printStateName();
+                case 2 -> view.printCapitalName();
+                case 3 -> view.printStateArea();
+                case 4 -> view.printRegionCount();
+                case 5 -> view.printResidentsAverageAge();
+                case 6 -> view.printResByLettersNumber();
+                case 7 -> view.printResNamesByFirstChar();
+                case 0 -> {
                     System.out.println("Bye bye!");
                     flag = false;
-                    break;
+                }
             }
         }
     }
@@ -84,18 +65,16 @@ public class ControllerImpl implements Controller {
     }
 
     @Override
-    public List<String> requestResByLettersNumber() {
+    public ArrayList<Citizen> requestResByLettersNumber() {
         System.out.println("Enter number from 5 to 10");
         int letterNum = menu.sc.nextInt();
-        List<String> residentNamesList = stateService.getResByLettersNumber(letterNum);
-        return residentNamesList;
+        return stateService.getResByLettersNumber(letterNum);
     }
 
     @Override
-    public List<String> requestResNamesByFirstChar() {
+    public ArrayList<Citizen> requestResNamesByFirstChar() {
         System.out.println("Enter letter");
         char letter = menu.sc.next().charAt(0);
-        List<String> namesCharList = stateService.getResNamesByFirstChar(letter);
-        return namesCharList;
+        return stateService.getResNamesByFirstChar(letter);
     }
 }

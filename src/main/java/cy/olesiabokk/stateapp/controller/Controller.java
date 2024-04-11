@@ -1,6 +1,8 @@
 package cy.olesiabokk.stateapp.controller;
 
-import java.util.List;
+import cy.olesiabokk.stateapp.model.entity.Citizen;
+
+import java.util.ArrayList;
 
 public interface Controller {
     String requestStateName();
@@ -13,8 +15,8 @@ public interface Controller {
 
     int requestResidentsAverageAge();
 
-    List<String> requestResByLettersNumber();
+    ArrayList<Citizen> requestResByLettersNumber();
 
-    List<String> requestResNamesByFirstChar();
+    ArrayList<Citizen> requestResNamesByFirstChar();
 
 }
