@@ -6,12 +6,12 @@ import cy.olesiabokk.stateapp.model.util.Generator;
 import java.util.ArrayList;
 
 public class City implements General {
-    private String name;
-    private Generator generator = new Generator();
+    private final String name;
 
     private final ArrayList<Citizen> citizens;
 
     public City() {
+        Generator generator = new Generator();
         this.name = generator.generateName();
         this.citizens = new ArrayList<>();
     }
@@ -29,4 +29,8 @@ public class City implements General {
         this.citizens.addAll(citizens);
     }
 
+    @Override
+    public String toString() {
+        return "City name = '" + name + '\'';
+    }
 }

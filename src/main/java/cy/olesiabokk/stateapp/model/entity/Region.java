@@ -7,11 +7,10 @@ import java.util.ArrayList;
 
 public class Region implements General {
     private final String name;
-    private State state;
-    private final Generator generator = new Generator();
     private final ArrayList<District> districts;
 
     public Region(ArrayList<District> districts) {
+        Generator generator = new Generator();
         this.name = generator.generateName();
         this.districts = new ArrayList<>(districts);
     }
@@ -23,5 +22,10 @@ public class Region implements General {
 
     public ArrayList<District> getDistricts() {
         return new ArrayList<>(districts);
+    }
+
+    @Override
+    public String toString() {
+        return "Region name = '" + name + '\'';
     }
 }
