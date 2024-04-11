@@ -6,22 +6,26 @@ import cy.olesiabokk.stateapp.model.util.Generator;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Citizen implements General {
-    private static AtomicLong counter = new AtomicLong(0);
+    private static final AtomicLong counter = new AtomicLong(0);
     private final long id;
-    private String name;
-    private String surname;
-    private int age;
+    private final String name;
+    private final String surname;
+    private final int age;
+    private final State state;
+    private final String cityName;
+    private final String districtName;
+    private final String regionName;
 
-    private City city;
-    private State state;
-    private Generator generator = new Generator();
-
-    public Citizen() {
+    public Citizen(State state, String cityName, String districtName, String regionName) {
+        Generator generator = new Generator();
         this.id = createID();
         this.name = generator.generateName();
         this.surname = generator.generateName();
         this.age = generator.generateCitizenAge();
-        this.state = State.getInstance();
+        this.state = state;
+        this.cityName = cityName;
+        this.districtName = districtName;
+        this.regionName = regionName;
     }
 
     private static long createID() {
@@ -51,8 +55,13 @@ public class Citizen implements General {
 
     @Override
     public String toString() {
-        return "Citizen{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Citizen id = " + id +
+                ", name = " + name + '\'' +
+                ", surname = " + surname + '\'' +
+                ", age = " + age +
+                ", state = " + state.getName() +
+                ", city = " + cityName +
+                ", district = " + districtName +
+                ", region = " + regionName;
     }
 }

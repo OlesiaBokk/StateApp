@@ -19,10 +19,14 @@ public class State implements General {
         this.regions = entityGenerator.createRegionCollection();
         this.name = generator.generateName();
         this.area = generator.getRandomNumber(1000, 10000000);
-        regions.stream()
-                .flatMap(region -> region.getDistricts().stream())
-                .flatMap(district -> district.getCities().stream())
-                .forEach(city -> city.addCitizens(new EntityGenerator().createCitizenCollection()));
+        for (Region region : getRegions()) {
+            for (District district : region.getDistricts()) {
+                for (City city : district.getCities()) {
+                    city.addCitizens(new EntityGenerator()
+                            .createCitizenCollection(this, city.getName(), district.getName(), region.getName()));
+                }
+            }
+        }
         this.capital = Capital.getInstance();
     }
 
@@ -43,7 +47,7 @@ public class State implements General {
         return capital.getName();
     }
 
-    public int getArea(){
+    public int getArea() {
         return area;
     }
 }
