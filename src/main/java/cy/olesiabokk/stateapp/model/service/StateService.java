@@ -1,6 +1,8 @@
 package cy.olesiabokk.stateapp.model.service;
 
-import java.util.List;
+import cy.olesiabokk.stateapp.model.entity.Citizen;
+
+import java.util.ArrayList;
 
 public interface StateService {
     String getStateName();
@@ -13,7 +15,7 @@ public interface StateService {
 
     int getResidentAverageAge();
 
-    List<String> getResByLettersNumber(int number);
+    ArrayList<Citizen> getResByLettersNumber(int number);
 
-    List<String> getResNamesByFirstChar(char character);
+    ArrayList<Citizen> getResNamesByFirstChar(char character);
 }
