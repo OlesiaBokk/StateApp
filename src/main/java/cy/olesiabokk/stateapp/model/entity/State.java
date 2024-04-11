@@ -22,8 +22,7 @@ public class State implements General {
         for (Region region : getRegions()) {
             for (District district : region.getDistricts()) {
                 for (City city : district.getCities()) {
-                    city.addCitizens(new EntityGenerator()
-                            .createCitizenCollection(this, city.getName(), district.getName(), region.getName()));
+                    city.addCitizens(entityGenerator.createCitizenCollection(this, city.getName(), district.getName(), region.getName()));
                 }
             }
         }
