@@ -1,14 +1,15 @@
 package cy.olesiabokk.stateapp.model.service;
 
 import cy.olesiabokk.stateapp.model.entity.*;
+import cy.olesiabokk.stateapp.model.util.EntityGenerator;
 
 import java.util.ArrayList;
 
 public class StateServiceImpl implements StateService {
     private final State state;
 
-    public StateServiceImpl() {
-        state = State.getInstance();
+    public StateServiceImpl(EntityGenerator entityGenerator) {
+        state = State.getInstance(entityGenerator);
     }
 
     @Override
@@ -44,25 +45,26 @@ public class StateServiceImpl implements StateService {
     @Override
     public ArrayList<Citizen> getResByLettersNumber(int number) {
         ArrayList<Citizen> citizens = getCitizenList();
-        ArrayList<Citizen> citizensStartLetter = new ArrayList<>();
+        ArrayList<Citizen> citizensNumLetter = new ArrayList<>();
         for (int i = 0; i < citizens.size(); i++) {
             if (citizens.get(i).getName().toCharArray().length == number) {
-                citizensStartLetter.add(citizens.get(i));
+                citizensNumLetter.add(citizens.get(i));
             }
         }
-        return citizensStartLetter;
+        return citizensNumLetter;
     }
 
     @Override
     public ArrayList<Citizen> getResNamesByFirstChar(char character) {
         ArrayList<Citizen> citizens = getCitizenList();
-        ArrayList<Citizen> citizenByFirstChar = getCitizenList();
+        ArrayList<Citizen> citizenByFirstChar = new ArrayList<>();
         for (int i = 0; i < citizens.size(); i++) {
             if (citizens.get(i).getName().charAt(0) == character) {
                 citizenByFirstChar.add(citizens.get(i));
             }
         }
         return citizenByFirstChar;
+
     }
 
     public ArrayList<District> getDistrictList() {

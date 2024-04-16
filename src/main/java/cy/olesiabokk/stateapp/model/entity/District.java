@@ -1,7 +1,6 @@
 package cy.olesiabokk.stateapp.model.entity;
 
 import cy.olesiabokk.stateapp.model.entity.interfaces.General;
-import cy.olesiabokk.stateapp.model.util.Generator;
 
 import java.util.ArrayList;
 
@@ -9,9 +8,8 @@ public class District implements General {
     private final String name;
     private final ArrayList<City> cities;
 
-    public District(ArrayList<City> cities) {
-        Generator generator = new Generator();
-        this.name = generator.generateName();
+    public District(ArrayList<City> cities, String name) {
+        this.name = name;
         this.cities = new ArrayList<>(cities);
     }
 

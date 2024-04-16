@@ -1,7 +1,6 @@
 package cy.olesiabokk.stateapp.model.entity;
 
 import cy.olesiabokk.stateapp.model.entity.interfaces.General;
-import cy.olesiabokk.stateapp.model.util.Generator;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,12 +15,11 @@ public class Citizen implements General {
     private final String districtName;
     private final String regionName;
 
-    public Citizen(State state, String cityName, String districtName, String regionName) {
-        Generator generator = new Generator();
+    public Citizen(State state,String name, String surname, int age, String cityName, String districtName, String regionName) {
         this.id = createID();
-        this.name = generator.generateName();
-        this.surname = generator.generateName();
-        this.age = generator.generateCitizenAge();
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
         this.state = state;
         this.cityName = cityName;
         this.districtName = districtName;

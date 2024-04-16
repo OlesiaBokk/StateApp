@@ -2,34 +2,34 @@ package cy.olesiabokk.stateapp.model.entity;
 
 import cy.olesiabokk.stateapp.model.entity.interfaces.General;
 import cy.olesiabokk.stateapp.model.util.EntityGenerator;
-import cy.olesiabokk.stateapp.model.util.Generator;
 
 import java.util.ArrayList;
 
 public class State implements General {
-    private static final State instance = new State();
+    private static State instance;
     private final int area;
     private final String name;
     private final Capital capital;
     private final ArrayList<Region> regions;
 
-    private State() {
-        Generator generator = new Generator();
-        EntityGenerator entityGenerator = new EntityGenerator();
+    private State(EntityGenerator entityGenerator) {
         this.regions = entityGenerator.createRegionCollection();
-        this.name = generator.generateName();
-        this.area = generator.getRandomNumber(1000, 10000000);
+        this.name = entityGenerator.generateName();
+        this.area = entityGenerator.getRandomNumber(1000, 10000000);
         for (Region region : getRegions()) {
             for (District district : region.getDistricts()) {
                 for (City city : district.getCities()) {
-                    city.addCitizens(entityGenerator.createCitizenCollection(this, city.getName(), district.getName(), region.getName()));
+                    city.addCitizens(entityGenerator.createCitizenCollection(this, entityGenerator.generateName(), entityGenerator.generateName(), entityGenerator.generateCitizenAge(), city.getName(), district.getName(), region.getName()));
                 }
             }
         }
-        this.capital = Capital.getInstance();
+        this.capital = Capital.getInstance(entityGenerator.generateName());
     }
 
-    public static State getInstance() {
+    public static State getInstance(EntityGenerator entityGenerator) {
+        if(instance == null){
+            instance = new State(entityGenerator);
+        }
         return instance;
     }
 
