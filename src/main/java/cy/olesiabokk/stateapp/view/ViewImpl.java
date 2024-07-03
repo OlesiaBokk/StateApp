@@ -3,7 +3,7 @@ package cy.olesiabokk.stateapp.view;
 import cy.olesiabokk.stateapp.controller.Controller;
 import cy.olesiabokk.stateapp.model.entity.Citizen;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ViewImpl implements View {
     public Controller controller;
@@ -39,7 +39,7 @@ public class ViewImpl implements View {
 
     @Override
     public void printResByLettersNumber() {
-        ArrayList<Citizen> citizens = controller.requestResByLettersNumber();
+        List<Citizen> citizens = controller.requestResByLettersNumber();
         for (Citizen citizen : citizens) {
             System.out.println(citizen.toString());
         }
@@ -47,7 +47,7 @@ public class ViewImpl implements View {
 
     @Override
     public void printResNamesByFirstChar() {
-        ArrayList<Citizen> citizens = controller.requestResNamesByFirstChar();
+        List<Citizen> citizens = controller.requestResNamesByFirstChar();
         for (Citizen citizen: citizens) {
             System.out.println(citizen.toString());
         }
